@@ -40,7 +40,8 @@ Coefficient Variance is a statistical measure that simplifies the interpretation
 Fourier transform is a mathematical function that maps a series from time domain to frequency domain. It deconstructs the original signal into a combination of sinusoidal functions. The glycemic levels of the patients mostly follow a cyclic pattern, with blood-glucose levels steadily increasing when one is consuming a meal and reducing after the insulin is injected either by Bolus or by Basal injection. This near cyclical pattern can be made use of by adopting the fourier analysis in estimating the time period of meal consumption. Though Fourier transform is a basic engineering tool to analyze signals, there have been a lot of studies about the applicability and clinical significance of the same. The harmonic decomposition performed by Fourier transform can be used in predicting the glucose variability in absolute terms. 
 
 The frequency decompositions done by FFT can help in detecting the maximum significant frequency from the given data. The idea is that you could move back and forth between the period of the wave and the frequency by using the Fourier Transform. This is extremely helpful in extracting patterns which may look like a random noise. All the Glycemic level data has been sampled at a rate of 1 per 5 minutes for a total time period of two and a half hours. When FFT is applied on to a time series, it gives the amplitudes of the highest frequencies, which corresponds to the absolute values of the CGM data, from which the meal intake can be deduced.  
- 
+
+![FFT](./graph-images/FFT.JPG)
        
 
        
@@ -59,12 +60,11 @@ The lognorm distribution fitted data can be used to derive two parameters of the
 
 #### 2.5 Discrete Wavelet Transform
 Wavelet transforms analyses signal whose frequency varies over time. The time domain signal is decomposed by contractions and expansions of the wavelet function by applying small windows at higher frequencies and large windows at low frequencies. When we consider the CGM data, we find that peaks occur at different times in 2.5 hour interval. To analyse this, we use the Discrete Wavelet Transform. The wavelet transform contains information on both the time frequency and location of a signal, and hence wavelet transform can give a better result for meal detection.
- 
+![DWT](./graph-images/DWT.JPG)
  
 
 #### 2.6 Windowed Entropy
-In statistics, an approximate entropy (ApEn) is a technique used to quantify the amount of regularity and the unpredictability of fluctuations over time-series data. Moments such as mean and variance only tells us about the distribution of data in general. Hence we need a measure like Entropy to measure the randomness which is quite helpful in forecasting based on time series data. Applying entropy as a whole over a series will give a valued measure of the randomness. We adopted the same and split the entire series into different windows and calculated the entropy for every window.  The window which shows the maximum randomness corresponds to the period of meal intake. With a window size of 5, we deduced that the lowest entropy value correlated with the window in which the person took in a meal. The results can be seen below.
-
+In statistics, an approximate entropy (ApEn) is a technique used to quantify the amount of regularity and the unpredictability of fluctuations over time-series data. Moments such as mean and variance only tells us about the distribution of data in general. Hence we need a measure like Entropy to measure the randomness which is quite helpful in forecasting based on time series data. Applying entropy as a whole over a series will give a valued measure of the randomness. We adopted the same and split the entire series into different windows and calculated the entropy for every window.  The window which shows the maximum randomness corresponds to the period of meal intake. With a window size of 5, we deduced that the lowest entropy value correlated with the window in which the person took in a meal. The results can be seen below.![Windowed Entropy](./graph-images/WinEntropy.JPG)
 
 
 
@@ -88,6 +88,8 @@ Principal Component Analysis  is a method that is used to prevent the curse of d
  
 We took the top five eigenvalues from the PCA and calculated their ratio and plotted them on a graph like the one seen above. It shows that the top five latent features obtained contributes to approximately 93% of the total variance of the data. Hence it is rather sufficient to represent the data as a combination of five features rather than twenty. 
 
+![PCA Variance](./graph-images/PCAVariance.JPG)
+
 #### 3.4  Explanation for Choosing the top 5 features.
 	The weightage of each feature after PCA can be visualized from the below histogram. As we can see, the histogram shows 5 different peak bars in each plot that corresponds to the maximum weighted feature that can be used as a feature.
 In graph 1 below, the fourth feature of DWT has maximum weightage and can be used as an important feature for meal detection. Likewise, in graph 2, 6th feature of FFT tops. In graph 3, CGM velocity with respect to acceleration is the maximum. In graph 4, AUC can be used. Finally, in graph 5, Log normal distribution standard deviation is the maximum.
@@ -95,7 +97,7 @@ In graph 1 below, the fourth feature of DWT has maximum weightage and can be use
               
 The principal components contribute to the bulk of variance in the entire dataset. We tried to visualise it by plotting the spread of data points along a principal component on x-axis against all other principal components for all patients. As seen in the below graphs, the principal component 1 indicated in red color has the data spread out the maximum indicating high variance and higher discrimination power. Though the variance decreases as we move down to other principal components, it can be shown that the distribution of data among the five principal components is varied enough to have higher discrimination power and hence can result in better analysis and prediction without errors.
  
-
+![PCA Data Distribution](./graph-images/PCADataDist.JPG)
 
 ### References :
 A byte of Python : by Swaroop C.H.
