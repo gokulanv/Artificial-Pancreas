@@ -22,7 +22,7 @@ Since we are extracting features which can deduce the time interval during which
 Velocity can be obtained by calculating the rate of change of glucose levels with respect to time. We can simply obtain it by calculating the slope between two consecutive points in the time series. Higher rise in velocity means increased glucose levels that indicates meal intake by a patient. But CGM velocity taken as an absolute value has an inherent flaw in it. The common pattern seen in the data amongst all the patients is that they have a small meal in between during the course of the day. Hence, we end up having false positives or local minima. In order to solve this problem, we transformed velocity with respect to time. Here, at each point acceleration is observed. Once it starts getting near to 0, we can deduce that he is having lunch at a time period before the levels decelerated. This feature is useful to deduce the Hypoglycemic levels, and was validated by comparing it with the observation of insulin Bolus and Basal injections. 
 
 ####  2.1.(1) Velocity graph for the timestamp acceleration:
-  
+![Velocity graph for the timestamp acceleration](./graph-images/velTsGraph.JPG)
 
 
 
