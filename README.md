@@ -91,7 +91,8 @@ We took the top five eigenvalues from the PCA and calculated their ratio and plo
 ![PCA Variance](./graph-images/PCAVariance.JPG)
 
 #### 3.4  Explanation for Choosing the top 5 features.
-	The weightage of each feature after PCA can be visualized from the below histogram. As we can see, the histogram shows 5 different peak bars in each plot that corresponds to the maximum weighted feature that can be used as a feature.
+The weightage of each feature after PCA can be visualized from the below histogram. As we can see, the histogram shows 5 different peak bars in each plot that corresponds to the maximum weighted feature that can be used as a feature.
+
 In graph 1 below, the fourth feature of DWT has maximum weightage and can be used as an important feature for meal detection. Likewise, in graph 2, 6th feature of FFT tops. In graph 3, CGM velocity with respect to acceleration is the maximum. In graph 4, AUC can be used. Finally, in graph 5, Log normal distribution standard deviation is the maximum.
 
               
